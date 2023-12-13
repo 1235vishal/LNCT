@@ -1,0 +1,84 @@
+body {
+  align-items: center;
+  background: #E3E3E3;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+}
+
+@-webkit-keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(calc(-250px * 7));
+  }
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(calc(-250px * 7));
+  }
+}
+
+.slider {
+  /* background: white; */
+  box-shadow: 0 10px 20px -5px rgba(242, 237, 237, 0.125);
+  height: 100px;
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+  max-width: 100%; /* Ensures the slider doesn't exceed the viewport width */
+}
+
+.slider::before,
+.slider::after {
+  background: linear-gradient(to right,white, rgba(255, 255, 255, 0) 100%);
+  content: ""; 
+  height: 100px;
+  position: absolute;
+  width: 200px;
+  z-index: 2;
+}
+
+.slider::after {
+  right: 0;
+  top: 0;
+  transform: rotateZ(180deg);
+}
+
+.slider::before {
+  left: 0;
+  top: 0;
+}
+
+.slider .slide-track {
+  display: flex;
+  width: calc(250px * 14);
+  animation: scroll 40s linear infinite;
+}
+
+.slider .slide {
+  height: 100px;
+  width: 250px;
+}
+
+/* Media query for smaller screens like phones */
+@media (max-width: 768px) {
+  .slider {
+    width: 100%; /* Set slider width to 100% of the viewport */
+  }
+
+  .slider .slide {
+    width: 150px; /* Adjust slide width for smaller screens */
+  }
+
+  .slider .slide-track {
+    width: calc(150px * 14); /* Adjust track width for smaller slides */
+  }
+}
